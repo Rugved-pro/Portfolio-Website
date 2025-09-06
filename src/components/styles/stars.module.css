@@ -1,0 +1,129 @@
+.hero {
+  /* This ensures the section covers the entire screen vertically */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  /* Layered background for depth */
+  background: 
+    /* Bottom planet glow */
+    radial-gradient(circle at 30% 40%, rgba(0, 150, 255, 0.12) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(255, 0, 200, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(0, 255, 180, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 10% 10%, rgba(88, 158, 207, 0.185) 0%, transparent 30%),
+    /* radial-gradient(circle at 40% 10%, rgba(241, 143, 220, 0.39) 0%, transparent 3%), */
+    radial-gradient(circle at 50% 20%, rgba(255, 51, 0, 0.15) 0%, transparent 40%),
+    
+   /*  radial-gradient(circle at 30% 50%, rgba(80, 22, 240, 0.39) 0%, transparent 7%),
+    radial-gradient(circle at 10% 10%, rgba(238, 54, 8, 0.733) 0%, transparent 5%), */
+    #000; /* black space */
+  
+  background-size: 200% 200%;
+  animation: bgShift 20s ease-in-out infinite alternate;
+}
+.heroTitle{
+  color: white;
+  z-index: 1;/* Ensure the title is above the stars */
+  font-size: 3rem;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  box-shadow: 
+    10vw 20vh white,
+    30vw 40vh rgba(255,255,255,0.7),
+    50vw 10vh rgba(255,255,255,0.5),
+    70vw 80vh rgba(255,255,255,0.8),
+    90vw 60vh white,
+    20vw 70vh rgba(255,255,255,0.6),
+    60vw 30vh rgba(255,255,255,0.4),
+    80vw 20vh white;
+  animation: twinkle 4s infinite alternate;
+  z-index: 1;
+}
+
+.star{
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 1.5s infinite alternate;
+  opacity: 0.8;
+}
+.hero-bg{
+  background: 
+  radial-gradient(circle at 50% 120%, rgba(255,255,255,0.05) 0%, transparent 70%), /* glow at bottom */
+  linear-gradient(to bottom, #0d0d12 0%, #000 100%);
+}
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+@keyframes bgShift {
+  0% { background-position: 0% 0%; transform: scale(1); }
+  50% { background-position: 20% 10%; transform: scale(1.05); }
+  100% { background-position: 40% 20%; transform: scale(1); }
+}
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+/*   filter: blur(1px);  *//* makes it soft */
+  opacity: 0.6;
+}
+
+.nebula.red {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,100,50,0.4) 0%, transparent 40%);
+  top: 10%; left: 10%;
+  animation-duration: 15s; /* each nebula gets unique timing */
+  animation: floatRed 10s infinite ease-in-out alternate;
+}
+
+.nebula.purple {
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(200,50,255,0.35) 0%, transparent 20%);
+  top: 20%; right: 15%;
+  animation-duration: 10s;
+  animation: floatPurple 10s infinite ease-in-out alternate;
+}
+
+.nebula.blue {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(50,150,255,0.3) 0%, transparent 60%);
+  bottom: 10%; left: 30%;
+  animation-duration: 10s;
+  animation: floatBlue 10s infinite ease-in-out alternate;
+}
+@keyframes floatRed {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-30px, 20px) scale(1.1); }
+  50%  { transform: translate(20px, -25px) scale(0.95); }
+  75%  { transform: translate(-15px, 30px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatPurple {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(25px, -20px) scale(0.9); }
+  50%  { transform: translate(-20px, 25px) scale(1.1); }
+  75%  { transform: translate(15px, -15px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatBlue {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-15px, -10px) scale(1.05); }
+  50%  { transform: translate(30px, 20px) scale(0.9); }
+  75%  { transform: translate(-20px, 15px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+
